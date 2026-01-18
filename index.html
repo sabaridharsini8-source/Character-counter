@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            border: none;
+            position: relative;
+            left: 500px;
+            top: 20px;
+            background-color: palegreen;
+        }
+        textarea {
+            width: 400px;
+            height: 200px;
+            padding: 8px;
+        }
+        .counter {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .warning {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<h1>Character Counter</h1>
+<h2>Write an essay about AI in daily life not<br>exceeding 200 words</h2>
+<h3>Message (200 characters max)</h3>
+
+<textarea id="message" placeholder="Type your answer"></textarea>
+
+<div class="counter" id="counter">0 / 200 characters</div>
+<div class="warning" id="warning"></div>
+
+<script>
+    var textarea = document.getElementById("message");
+    var counter = document.getElementById("counter");
+    var warning = document.getElementById("warning");
+    var maxLength = 200;
+
+    textarea.addEventListener("input", function () {
+        var textLength = textarea.value.length;
+
+        if (textLength > maxLength) {
+            textarea.value = textarea.value.substring(0, maxLength);
+            warning.innerHTML = "Character limit reached!";
+            textLength = maxLength;
+        } else {
+            warning.innerHTML = "";
+        }
+
+        counter.innerHTML = textLength + " / " + maxLength + " characters";
+    });
+</script>
+
+</body>
+</html>
